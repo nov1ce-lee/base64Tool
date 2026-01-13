@@ -48,15 +48,6 @@ npm install
 npm run dev
 ```
 
-## 发布到 GitHub Pages（推荐）
-
-项目已经内置了 GitHub Actions 工作流：每次 push 到 `main` 分支会自动发布。
-
-1. 把仓库推到 GitHub（默认分支用 `main`）
-2. 在 GitHub 仓库里打开：Settings → Pages
-3. Source 选择：GitHub Actions
-4. 等 Actions 跑完后，就能在上面的在线地址访问
-
 ## 使用说明
 
 ### 1）纯文本加/解密
