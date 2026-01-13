@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Save .dat 解析 / 加解密工具</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Save .dat 解析 / 加解密工具</h1>
+      <div class="sub">支持：AES-ECB(Pkcs7) + Base64，BinaryFormatter 字符串提取导入导出</div>
+    </header>
+    <main>
+      <div class="grid">
+        <section class="panel">
+          <h2>文本加密 / 解密</h2>
+          <div class="row cols-3">
+            <div>
+              <label for="cryptoAlgo">加密方式</label>
+              <select id="cryptoAlgo">
+                <option value="aes-ecb-pkcs7">AES-ECB / Pkcs7 (CryptoJS)</option>
+                <option value="none">不加密（仅编码转换）</option>
+              </select>
+            </div>
+            <div>
+              <label for="cryptoKey">Key（UTF-8）</label>
+              <input id="cryptoKey" type="text" value="UKu52ePUBwetZ9wNX88o54dnfKRu0T1l" />
+            </div>
+            <div>
+              <label for="cipherEncoding">输出编码</label>
+              <select id="cipherEncoding">
+                <option value="base64">Base64</option>
+                <option value="base64url">Base64URL</option>
+                <option value="hex">Hex</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="split">
+            <div>
+              <label for="plainText">明文（JSON 或任意文本）</label>
+              <textarea id="plainText" spellcheck="false"></textarea>
+              <div class="actions gap-top">
+                <button id="btnEncrypt">加密 →</button>
+                <button id="btnSwap" class="secondary">交换</button>
+                <button id="btnClearText" class="danger">清空</button>
+              </div>
+            </div>
+            <div>
+              <label for="cipherText">密文（Base64/Hex）</label>
+              <textarea id="cipherText" spellcheck="false"></textarea>
+              <div class="actions gap-top">
+                <button id="btnDecrypt">← 解密</button>
+                <button id="btnPrettyJson" class="secondary">格式化 JSON</button>
+              </div>
+            </div>
+          </div>
+          <div id="textStatus" class="status" style="display: none"></div>
+        </section>
+
+        <section class="panel">
+          <h2>.dat 导入 / 导出</h2>
+          <div class="row cols-2">
+            <div>
+              <label for="datFile">导入 .dat（二进制）</label>
+              <input id="datFile" type="file" accept=".dat,application/octet-stream" />
+            </div>
+            <div>
+              <label for="downloadName">导出文件名</label>
+              <input id="downloadName" type="text" value="save_export.dat" />
+            </div>
+          </div>
+
+          <div class="row cols-2">
+            <div>
+              <label for="extractedEncoded">提取到的编码串</label>
+              <textarea id="extractedEncoded" spellcheck="false"></textarea>
+              <div class="actions gap-top">
+                <button id="btnCopyEncoded" class="secondary">复制编码串</button>
+                <button id="btnLoadEncodedToCipher" class="secondary">填入“密文”</button>
+              </div>
+            </div>
+            <div>
+              <label for="datJson">解密后的 JSON（可编辑）</label>
+              <textarea id="datJson" spellcheck="false"></textarea>
+              <div class="actions gap-top">
+                <button id="btnExportDat">导出 .dat</button>
+                <button id="btnPrettyDatJson" class="secondary">格式化 JSON</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="datMeta" class="status" style="display: none"></div>
+          <div id="datStatus" class="status" style="display: none"></div>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
+
