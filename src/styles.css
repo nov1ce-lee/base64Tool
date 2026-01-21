@@ -27,6 +27,21 @@ header {
   z-index: 20;
 }
 
+header .brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+header .logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+}
+
 header h1 {
   margin: 0;
   font-size: 16px;
@@ -187,4 +202,3 @@ button:disabled {
     grid-template-columns: 1fr 1fr;
   }
 }
-
